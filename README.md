@@ -36,19 +36,21 @@ NeuralWallet/
 - Biblioteki:
   - pandas
   - sqlalchemy
-  - mysql-connector-python *(jeśli używasz MySQL)*
+  - mysql-connector-python _(jeśli używasz MySQL)_
 
 ---
 
 ## Jak uruchomić projekt
 
 1. Sklonuj repozytorium:
+
 ```bash
 git clone https://github.com/twoj-login/NeuralWallet.git
 cd NeuralWallet
 ```
 
 2. Utwórz środowisko i zainstaluj zależności:
+
 ```bash
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
@@ -56,6 +58,7 @@ pip install -r requirements.txt
 ```
 
 3. Utwórz bazę danych i uruchom aplikację:
+
 ```bash
 python sql/init_db.py
 python app/main.py
