@@ -1,0 +1,12 @@
+
+{
+  "scripts": {
+    "format:sql": "powershell -Command \"Get-ChildItem -Recurse -Filter *.sql | ForEach-Object { sql-formatter $_.FullName | Set-Content $_.FullName }\"",
+    "format:prettier": "prettier --config .prettierrc --write 'src/**/*.js'",
+    "format": "npm run format:sql && npm run format:prettier"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "sql-formatter": "^15.5.2"
+  }
+}
