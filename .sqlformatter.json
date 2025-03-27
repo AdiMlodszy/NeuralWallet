@@ -1,0 +1,10 @@
+{
+    "language": "mysql",
+    "keywordCase": "upper",
+    "identifierCase": "lower",
+    "logicalOperatorNewline": "before",
+    "tabulateAlias": true,
+    "denseOperators": false,
+    "linesBetweenQueries": 2,
+    "indent": "  "
+  }
