@@ -18,13 +18,18 @@
 
 ```
 NeuralWallet/
-├── app/          # Logika aplikacji
-├── import/       # Skrypty do importu danych (np. CSV)
-├── sql/          # Skrypty SQL do tworzenia i inicjalizacji bazy danych
-├── docs/         # Dokumentacja: ERD, notatki projektowe
-├── data/         # Przykładowe dane (CSV, JSON itp.)
-├── tests/        # (opcjonalnie) testy aplikacji
-└── README.md     # Ten plik
+├── app/               # Logika aplikacji (backend, frontend)
+├── data/              # Surowe dane, zrzuty bazy danych (np. do dockera)
+├── docker/            # Konfiguracja Dockera + docker-compose
+├── docs/              # Dokumentacja: ERD, backlog, konwencje commitów itp.
+├── import/            # Skrypty do importu danych (np. CSV)
+├── sql/               # Skrypty SQL do tworzenia schematu bazy danych
+├── .vscode/           # Konfiguracje edytora (formatter, ustawienia workspace)
+├── .gitignore         # Ignorowane pliki
+├── package.json       # Skrypty formatowania SQL, configi dev-tools
+├── .prettierrc.json   # Konfiguracja Prettiera (JS, SQL)
+├── .sqlformatter.json # Konfiguracja SQL Formatter (SQL)
+└── README.md          # Ten plik
 ```
 
 ---
@@ -32,7 +37,8 @@ NeuralWallet/
 ## Wymagania
 
 - Python 3.10+
-- Baza danych: MySQL, SQLite lub PostgreSQL
+- MySQL 8.0+ (uruchamiany lokalnie lub przez Dockera)
+- Node.js (do narzędzi developerskich jak prettier/sql-formatter)
 - Biblioteki:
   - pandas
   - sqlalchemy
@@ -40,12 +46,22 @@ NeuralWallet/
 
 ---
 
-## Jak uruchomić projekt
+## Uruchamianie przez Dockera (zalecane)
+
+```bash
+docker-compose up -d
+```
+
+Domyślnie uruchomi serwer MySQL i utworzy bazę danych `neuralwallet`.
+
+---
+
+## Uruchomienie projektu lokalnie (dev)
 
 1. Sklonuj repozytorium:
 
 ```bash
-git clone https://github.com/twoj-login/NeuralWallet.git
+git clone https://github.com/AdiMlodszy/NeuralWallet.git
 cd NeuralWallet
 ```
 
@@ -57,11 +73,23 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-3. Utwórz bazę danych i uruchom aplikację:
+3. Uruchom bazę danych (Docker lub lokalnie)
+
+4. Zainicjalizuj bazę danych i uruchom aplikację:
 
 ```bash
 python sql/init_db.py
 python app/main.py
+```
+
+---
+
+## Skrypty developerskie (npm)
+
+```bash
+npm run format:sql        # Formatuje pliki SQL
+npm run format:prettier   # Formatuje kod JS/TS
+npm run format            # Wykonuje oba
 ```
 
 ---
@@ -77,4 +105,5 @@ python app/main.py
 
 ## Autor
 
-Tworzone przez add.ktiv – projekt edukacyjny z pogranicza finansów i AI.
+Tworzone przez **add.ktiv** – projekt edukacyjny z pogranicza finansów i AI.
+
